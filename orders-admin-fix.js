@@ -84,7 +84,7 @@
   }
 
   window.renderOrders = function renderOrders() {
-    openDynamic('Orders', { actions: '<div class="orders-toolbar"><input id="ordersSearch" placeholder="Search order, customer or phone"><select id="ordersStatus"><option value="all">All statuses</option>${statuses.map((item) => `<option>${item}</option>`).join('')}</select><select id="ordersDate"><option value="all">All dates</option><option value="today">Current / today</option><option value="previous">Previous orders</option><option value="new">New orders</option></select></div>', content: '<div id="ordersResults"></div><div id="ordersDelivered"></div>' });
+    openDynamic('Orders', { actions: `<div class="orders-toolbar"><input id="ordersSearch" placeholder="Search order, customer or phone"><select id="ordersStatus"><option value="all">All statuses</option>${statuses.map((item) => `<option>${item}</option>`).join('')}</select><select id="ordersDate"><option value="all">All dates</option><option value="today">Current / today</option><option value="previous">Previous orders</option><option value="new">New orders</option></select></div>`, content: '<div id="ordersResults"></div><div id="ordersDelivered"></div>' });
     const draw = () => {
       const query = document.getElementById('ordersSearch').value.trim().toLowerCase();
       const status = document.getElementById('ordersStatus').value, date = document.getElementById('ordersDate').value;

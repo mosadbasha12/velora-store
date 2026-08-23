@@ -5,12 +5,12 @@ import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from 'https://www.
 const cfg = window.VELORA_FIREBASE_CONFIG || {};
 const configured = cfg.apiKey && !String(cfg.apiKey).includes('YOUR_') && cfg.projectId && !String(cfg.projectId).includes('YOUR_');
 const gate = document.getElementById('authGate'), modal = document.getElementById('authModal'), message = document.getElementById('authMessage'), gateStatus = document.getElementById('authGateStatus');
-const requestedView = new URLSearchParams(location.search).get('view') || (location.pathname.endsWith('store.html') ? 'customer' : 'admin');
+const requestedView = new URLSearchParams(location.search).get('view') || (location.pathname.endsWith('admin.html') ? 'admin' : 'customer');
 let auth, db, confirmationResult, recaptcha;
 const setMessage = (text, error = false) => { if (message) { message.textContent = text; message.className = `auth-message${error ? ' error' : ''}`; } };
 const openModal = (tab = 'login') => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.querySelector(`[data-auth-tab="${tab}"]`)?.click(); };
 const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); setMessage(''); };
-const showGate = (text = '') => { gate.hidden = true; gateStatus.textContent = text; document.querySelector('.app-shell').hidden = false; document.body.classList.add('auth-locked'); document.querySelector('.profile strong').textContent = 'Sign in'; document.querySelector('.profile small').textContent = 'Velora account'; };
+const showGate = (text = '') => { if (requestedView === 'admin') { location.replace('./store.html'); return; } gate.hidden = true; gateStatus.textContent = text; document.querySelector('.app-shell').hidden = false; document.body.classList.add('auth-locked'); document.querySelector('.profile strong').textContent = 'Sign in'; document.querySelector('.profile small').textContent = 'Velora account'; };
 const hideGate = () => { gate.hidden = true; document.querySelector('.app-shell').hidden = false; document.body.classList.remove('auth-locked'); };
 document.getElementById('openAuth')?.addEventListener('click', () => openModal('login'));
 document.getElementById('openSignup')?.addEventListener('click', () => openModal('signup'));

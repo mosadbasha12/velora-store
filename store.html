@@ -1,8 +1,22 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Velora Store</title></head>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Velora — Style in Every Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css"><link rel="stylesheet" href="store-overrides.css">
+</head>
 <body>
-<script>location.replace('./index.html?view=customer');</script>
-<noscript>Open <a href="./index.html?view=customer">Velora Store</a></noscript>
-</body>
-</html>
+  <header class="store-header"><a class="store-logo" href="./store.html"><span class="store-mark">V</span><span>VELORA</span></a><nav><a href="#collection">Collection</a><a href="#vip">VIP Collection</a><a href="#about">About Velora</a></nav><div class="store-actions"><label class="store-search">⌕<input id="storeSearch" placeholder="Search collection" aria-label="Search collection"></label><button class="cart-button" id="cartButton">Bag <b id="cartCount">0</b></button><button class="account-button" id="accountButton">Account</button></div></header>
+  <main>
+    <section class="store-hero"><div><span class="eyebrow">VELORA COLLECTION 2026</span><h1>Style in <em>every</em><br>detail.</h1><p>Curated pieces for the moments that deserve to be remembered. Discover the quiet luxury of Velora.</p><a class="primary-button" href="#collection">Explore collection →</a></div><div class="hero-glow">V</div></section>
+    <section class="collection-section vip-section" id="vip"><div class="section-heading"><div><span class="eyebrow">EXCLUSIVE EDIT</span><h2>VIP Collection</h2><p>Pieces selected for your most memorable occasions.</p></div><span class="vip-pill">Private selection</span></div><div class="customer-grid" id="vipProducts"></div></section>
+    <section class="collection-section" id="collection"><div class="section-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>Discover Velora</h2><p>Every piece tells a story of refined simplicity.</p></div><select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option><option value="Bags">Bags</option><option value="Shoes">Shoes</option><option value="Accessories">Accessories</option></select></div><div class="customer-grid" id="allProducts"></div></section>
+    <section class="collection-section" id="about"><div class="store-about"><span class="eyebrow">THE VELORA PROMISE</span><h2>Made to stay with you.</h2><p>Thoughtful design, considered materials, and the details that make a piece unmistakably yours.</p></div></section>
+  </main>
+  <footer><span>© 2026 Velora. Style in every detail.</span><a href="#about">Our story</a></footer>
+  <div id="storeModal"></div><div id="cartDrawer"></div><div id="storeToast" class="store-toast"></div>
+  <div id="storeAuth" class="store-auth" hidden><div class="store-auth-dialog"><button class="store-close" id="closeAuth">×</button><span class="eyebrow">VELORA ACCOUNT</span><h2 id="storeAuthTitle">Welcome to Velora</h2><p class="auth-subtitle">Sign in to continue your shopping journey.</p><div class="store-auth-tabs"><button class="active" data-auth-tab="login">Sign in</button><button data-auth-tab="register">Create account</button></div><form id="storeAuthForm"><label>Email address<input id="storeEmail" type="email" required autocomplete="email"></label><label>Password<input id="storePassword" type="password" required autocomplete="current-password"></label><label id="storePhoneWrap" hidden>Phone number<input id="storePhone" type="tel" autocomplete="tel" placeholder="+20"></label><button class="store-auth-submit" type="submit">Sign in</button></form><button class="text-action" id="storeReset" type="button">Forgot password?</button><p id="storeAuthMessage" class="auth-message"></p></div></div>
+  <script src="store.js"></script><script src="firebase-config.js"></script><script type="module" src="store-auth.js"></script>
+</body></html>

@@ -1,7 +1,7 @@
 const roleParams=new URLSearchParams(location.search);
 const routeView=roleParams.get('view');
 const routePath=location.pathname.toLowerCase();
-const entryRole=routeView==='customer'||routePath.endsWith('/store.html')?'customer':routeView==='admin'||routePath.endsWith('/admin.html')?'admin':'admin';
+const entryRole=routeView==='admin'||routePath.endsWith('/admin.html')?'admin':'customer';
 const accountRole=entryRole;
 localStorage.setItem('velora-account-role',accountRole);
 function addRoleActions(){const profile=document.getElementById('profileView');if(!profile||document.getElementById('customerViewLink'))return;const button=document.createElement('button');button.id='customerViewLink';button.className='secondary-action';button.textContent=accountRole==='customer'?'Open admin dashboard':'Open customer view';button.onclick=()=>{const next=accountRole==='customer'?'admin.html':'store.html';localStorage.setItem('velora-account-role',accountRole==='customer'?'admin':'customer');window.location.assign(new URL(next,window.location.href).href)};profile.appendChild(button)}

@@ -1,0 +1,31 @@
+.customer-price-row button {
+  float: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #986426;
+  border-radius: 50%;
+  background: #2b1c0c;
+  color: #edb55e;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.customer-price-row button:hover {
+  transform: scale(1.1);
+  background: #4a3014;
+}
+
+.view-link {
+  display: block;
+  float: none;
+  clear: both;
+  margin-top: 12px;
+  padding: 0;
+  text-align: left;
+}

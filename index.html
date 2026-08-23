@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velora Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="overrides.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-lockup">
+        <img src="assets/velora-logo.png" alt="Velora logo" />
+      </div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-section="Dashboard"><span class="icon">▦</span>Dashboard</button>
+        <button class="nav-item" data-section="Orders"><span class="icon">♧</span>Orders</button>
+        <button class="nav-item" data-section="Products"><span class="icon">◇</span>Products</button>
+        <button class="nav-item" data-section="Categories"><span class="icon">♢</span>Categories</button>
+        <button class="nav-item" data-section="Customers"><span class="icon">♧</span>Customers</button>
+        <button class="nav-item" data-section="Analytics"><span class="icon">▥</span>Analytics</button>
+        <button class="nav-item" data-section="Marketing"><span class="icon">♢</span>Marketing</button>
+        <button class="nav-item" data-section="Reviews"><span class="icon">☆</span>Reviews</button>
+        <button class="nav-item" data-section="Settings"><span class="icon">⚙</span>Settings</button>
+      </nav>
+      <div class="profile">
+        <div class="avatar">V</div>
+        <div><strong>VELORA Admin</strong><small>admin@velora.com</small></div>
+        <span class="chevron">⌄</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="welcome"><span class="spark">✧</span><div><h1>Welcome back, Admin</h1><p id="subtitle">Here's what's happening with your store today.</p></div></div>
+        <div class="top-actions">
+          <label class="search"><span>⌕</span><input id="searchInput" placeholder="Search anything..." /></label>
+          <button class="notification" aria-label="Notifications">♧<b></b></button>
+        </div>
+      </header>
+
+      <div id="dynamicPage" class="dynamic-page" hidden></div>
+      <section class="hero-card">
+        <img src="assets/velora-dashboard-reference.png" alt="Velora campaign" />
+        <div class="hero-overlay"><div class="hero-mark">V<span>✦</span>A</div><div class="hero-title">VELORA</div><div class="hero-tag">— &nbsp; Style in Every Detail ♡ &nbsp; —</div></div>
+      </section>
+
+      <section class="metric-grid">
+        <article class="metric-card"><div class="metric-head"><span class="metric-icon">＄</span><span>Total Revenue</span></div><strong>$24,780.00</strong><div class="metric-foot"><em>+12.5% ↑</em><span>vs last month</span><div class="sparkline one"></div></div></article>
+        <article class="metric-card"><div class="metric-head"><span class="metric-icon">♧</span><span>Total Orders</span></div><strong>1,482</strong><div class="metric-foot"><em>+8.2% ↑</em><span>vs last month</span><div class="sparkline two"></div></div></article>
+        <article class="metric-card"><div class="metric-head"><span class="metric-icon">♧</span><span>Total Customers</span></div><strong>892</strong><div class="metric-foot"><em>+10.3% ↑</em><span>vs last month</span><div class="sparkline three"></div></div></article>
+        <article class="metric-card"><div class="metric-head"><span class="metric-icon">▥</span><span>Conversion Rate</span></div><strong>2.45%</strong><div class="metric-foot"><em>+5.6% ↑</em><span>vs last month</span><div class="sparkline four"></div></div></article>
+        <article class="metric-card finance-card"><div class="metric-head"><span class="metric-icon">↗</span><span>Total Sales</span></div><strong>$86,420.00</strong><div class="metric-foot"><em>+18.4% ↑</em><span>gross sales</span><div class="sparkline one"></div></div></article>
+        <article class="metric-card finance-card"><div class="metric-head"><span class="metric-icon">↘</span><span>Total Purchases</span></div><strong>$42,860.00</strong><div class="metric-foot"><em>+7.1% ↑</em><span>inventory cost</span><div class="sparkline two"></div></div></article>
+        <article class="metric-card finance-card balance-card"><div class="metric-head"><span class="metric-icon">◈</span><span>Current Balance</span></div><strong>$43,560.00</strong><div class="metric-foot"><em>+22.1% ↑</em><span>available balance</span><div class="sparkline three"></div></div></article>
+      </section>
+
+      <section class="lower-grid">
+        <article class="panel sales-panel"><div class="panel-title"><div><h2>Sales Overview</h2><div class="legend"><span><i class="dot gold"></i>This Month</span><span><i class="dot gray"></i>Last Month</span></div></div><select id="rangeSelect"><option>This Month</option><option>Last Month</option><option>This Year</option></select></div><div class="chart"><div class="y-labels"><span>8K</span><span>6K</span><span>4K</span><span>2K</span><span>0</span></div><svg viewBox="0 0 720 230" preserveAspectRatio="none" aria-label="Sales chart"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d99835" stop-opacity=".28"/><stop offset="1" stop-color="#d99835" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0,195 C40,180 45,150 90,160 S135,115 175,145 S215,168 250,125 S305,162 345,110 S390,142 430,116 S470,130 510,78 S555,108 590,60 S630,80 670,42 S700,75 720,20 V230 H0Z"/><path class="line" d="M0,195 C40,180 45,150 90,160 S135,115 175,145 S215,168 250,125 S305,162 345,110 S390,142 430,116 S470,130 510,78 S555,108 590,60 S630,80 670,42 S700,75 720,20"/></svg><div class="x-labels"><span>1 Jun</span><span>5 Jun</span><span>10 Jun</span><span>15 Jun</span><span>20 Jun</span><span>25 Jun</span><span>30 Jun</span></div></div></article>
+        <article class="panel products-panel"><div class="panel-title"><h2>Top Products</h2><button class="link-btn">View all</button></div><div class="product-row"><div class="product-thumb bag"></div><div><strong>Velora Classic Bag</strong><small>Category: Bags</small></div><div class="product-stat"><strong>$4,280.00</strong><small>120 Orders</small></div></div><div class="product-row"><div class="product-thumb shoe"></div><div><strong>Velora Signature Heels</strong><small>Category: Shoes</small></div><div class="product-stat"><strong>$3,840.00</strong><small>86 Orders</small></div></div><div class="product-row"><div class="product-thumb watch"></div><div><strong>Velora Gold Watch</strong><small>Category: Accessories</small></div><div class="product-stat"><strong>$2,950.00</strong><small>64 Orders</small></div></div></article>
+      </section>
+    </main>
+  </div>
+  <div class="account-modal" id="accountModal" aria-hidden="true">
+    <div class="account-dialog" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+      <button class="modal-close" id="closeAccount" aria-label="Close account">×</button>
+      <div id="profileView">
+        <div class="account-avatar">V</div>
+        <p class="eyebrow">ACCOUNT PROFILE</p>
+        <h2 id="accountTitle">VELORA Admin</h2>
+        <p class="account-email" id="profileEmail">admin@velora.com</p>
+        <div class="account-details"><div><span>Role</span><strong>Store Administrator</strong></div><div><span>Status</span><strong class="status">Active</strong></div><div><span>Last login</span><strong>Today, 09:42 AM</strong></div></div>
+        <div class="account-menu-actions"><button class="account-action" id="accountSettings">Account settings</button><button class="logout-action" id="logoutAccount">Log out</button></div>
+      </div>
+      <div id="settingsView" class="settings-view" hidden>
+        <p class="eyebrow">ACCOUNT SETTINGS</p>
+        <h2>Personal information</h2>
+        <p class="settings-note">Update the details that appear on your Velora account.</p>
+        <form id="accountForm">
+          <label>Full name<input name="name" value="VELORA Admin" required /></label>
+          <label>Email address<input name="email" type="email" value="admin@velora.com" required /></label>
+          <label>Phone number<input name="phone" value="+20 100 123 4567" /></label>
+          <label>Address<input name="address" value="Cairo, Egypt" /></label>
+          <div class="readonly-row"><span>Role</span><strong>Store Administrator</strong></div>
+          <div class="settings-actions"><button type="button" class="secondary-action" id="backToProfile">Cancel</button><button type="submit" class="account-action">Save changes</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div id="productModalRoot"></div>
+  <script src="app.js"></script>
+  <script src="enhancements.js"></script>
+  <script src="analytics-fix.js"></script>
+  <script src="expense-fix.js"></script>
+  <script src="currency-fix.js"></script>
+  <script src="role-aware.js"></script>
+  <script src="review-fix.js"></script>
+  <script src="cover-picker-fix.js"></script>
+  <script src="category-delete-fix.js"></script>
+  <script src="dashboard-metrics-fix.js"></script>
+  <script src="offers-live-fix.js"></script>
+  <script src="customer-orders-fix.js"></script>
+  <script src="customer-reviews-fix.js"></script>
+  <script src="customer-commerce-fix.js"></script>
+  <script src="role-visibility-fix.js"></script>
+  <script src="customer-store-only-fix.js"></script>
+  <script src="cover-picker-visible-fix.js"></script>
+  <script src="orders-admin-fix.js"></script>
+  <script src="customer-navigation-fix.js"></script>
+  <script src="navigation-scroll-fix.js"></script>
+<script src="shopping-bag-fix.js"></script>
+<script src="product-save-fix.js"></script>
+<script src="payment-settings-fix.js"></script>
+</body>
+</html>

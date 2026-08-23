@@ -10,8 +10,8 @@ let auth, db, confirmationResult, recaptcha;
 const setMessage = (text, error = false) => { if (message) { message.textContent = text; message.className = `auth-message${error ? ' error' : ''}`; } };
 const openModal = (tab = 'login') => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.querySelector(`[data-auth-tab="${tab}"]`)?.click(); };
 const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); setMessage(''); };
-const showGate = (text = '') => { gate.hidden = false; gateStatus.textContent = text; document.querySelector('.app-shell').hidden = true; };
-const hideGate = () => { gate.hidden = true; document.querySelector('.app-shell').hidden = false; };
+const showGate = (text = '') => { gate.hidden = true; gateStatus.textContent = text; document.querySelector('.app-shell').hidden = false; document.body.classList.add('auth-locked'); document.querySelector('.profile strong').textContent = 'Sign in'; document.querySelector('.profile small').textContent = 'Velora account'; };
+const hideGate = () => { gate.hidden = true; document.querySelector('.app-shell').hidden = false; document.body.classList.remove('auth-locked'); };
 document.getElementById('openAuth')?.addEventListener('click', () => openModal('login'));
 document.getElementById('openSignup')?.addEventListener('click', () => openModal('signup'));
 document.getElementById('closeAuth')?.addEventListener('click', closeModal);
@@ -22,6 +22,8 @@ if (!configured) {
   showGate('أضف إعدادات Firebase في firebase-config.js لتفعيل الحسابات.');
 } else {
   const app = initializeApp(cfg); auth = getAuth(app); db = getFirestore(app);
+  document.querySelector('.profile')?.addEventListener('click', e => { if (!auth.currentUser) { e.preventDefault(); e.stopImmediatePropagation(); openModal('login'); } }, true);
+  document.addEventListener('click', e => { if (auth.currentUser || e.target.closest('#authModal')) return; const target = e.target.closest('button, a, input, select, textarea'); if (!target) return; e.preventDefault(); e.stopImmediatePropagation(); openModal('login'); }, true);
   const profileRef = uid => doc(db, 'users', uid);
   const readRole = async user => (await getDoc(profileRef(user.uid))).data()?.role || 'customer';
   const route = async user => {
